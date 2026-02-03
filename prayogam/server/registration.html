@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="icon" href="logo3.png">
+    <title>Sign-Up | Prayogam</title>
+    <script>
+        fetch('/users')
+          .then(response => response.json())
+          .then(users => {
+            const userList = document.getElementById('users-list');
+            users.forEach(user => {
+              const listItem = document.createElement('li');
+              listItem.textContent = `${user.email} - ${user.password}`;
+              userList.appendChild(listItem);
+            });
+          });
+      </script>
+    
+    
+    <style>
+   
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffff;
+}
+
+.container {
+    display: flex;
+    width: 800px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.signup-image {
+    flex: 1;
+    background: #ddd;
+}
+
+.signup-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.signup-form {
+    flex: 1;
+    padding: 40px;
+    background-color: rgb(181, 220, 248);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 20px;
+    color: #666;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: rgb(2, 167, 2);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#google{
+    height: 15px;
+    width: 21px;
+    position: relative;
+    left: 242px;
+    bottom: 27px;
+}
+
+button.google-signup {
+    background-color: #fefdfd;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+#Pass{
+    height: 30px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+}
+#sig{
+    height: 30px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+
+}
+    </style>
+
+</head>
+<body>
+    <div class="container">
+    <div class="signup-image">
+     <img src="https://www.pngall.com/wp-content/uploads/8/College-Student-PNG-Free-Download.png" alt="Sign Up Image" width="auto" length="auto">
+     </div>
+        <div class="signup-form">
+            <h2>Prayogam</h2>
+            <p>Create an Account!</p>
+            <button class="google-signup">
+                <a href="https://www.google.co.in/" style="text-decoration: none;color: black;">Sign up with Google</a>
+            </button>
+            <img id = "google" src="google.jpg" alt="">
+            <br> <br>
+            <p>OR SIGN UP WITH EMAIL</p>
+            <form action="signup" method="POST" >
+         <label for="email" class="email">
+         <input type ="email" name="email" placeholder="Email Address" required id="sig">
+        </label>
+          <br>
+          <label for ="password"  class="pass">
+            <input type="password" name="enter password" placeholder="Password" required id="Pass">
+            </label>
+            <br>
+            <br> 
+            </form>
+
+         <button type="submit">
+            <a href=""  style="text-decoration: none;color: white;">Create an account</a></button>
+            </form>
+            <br> <br>
+            <p><a href="signin.html" style="text-decoration: none;color:black">OR LOGIN</a></p>
+    </div>
+    </div>
+    
+</body>
+</html>

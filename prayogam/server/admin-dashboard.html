@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- admin-dashboard.html -->
+<form id="updateMarksForm">
+    <input type="text" id="rollNumber" placeholder="Roll Number" required />
+    <input type="number" id="marks" placeholder="Marks" required />
+    <button type="submit">Update Marks</button>
+  </form>
+  
+  <script>
+    document
+      .getElementById("updateMarksForm")
+      .addEventListener("submit", async (e) => {
+        e.preventDefault();
+  
+        const rollNumber = document.getElementById("rollNumber").value;
+        const marks = document.getElementById("marks").value;
+        const token = localStorage.getItem("token"); // Get saved token
+  
+        const response = await fetch("http://localhost:5000/api/admin/update-marks", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // Send token for authentication
+          },
+          body: JSON.stringify({ rollNumber, marks }),
+        });
+  
+        const data = await response.json();
+        console.log(data);
+        alert("Marks updated successfully!");
+      });
+  </script>
+</body>
+</html>
